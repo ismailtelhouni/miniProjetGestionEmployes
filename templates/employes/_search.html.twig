@@ -1,0 +1,7 @@
+{{ form_start(formSearch) }}
+    <div class="input-group "> 
+        <input class="form-control" id='{{ formSearch.Search.vars.id }}' name='{{ formSearch.Search.vars.full_name }}' value='{{ formSearch.Search.vars.value }}' type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+        {% do formSearch.Search.setRendered %}
+        <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+    </div>
+{{ form_end(formSearch) }}

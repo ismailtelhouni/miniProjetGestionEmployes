@@ -1,0 +1,75 @@
+.form
+{
+    margin: auto;
+    margin-top: 100px;
+}
+.Premier-clonne,.obli
+{
+    color: #4b91b4;
+    padding: 0px;
+    padding-left: 20px;
+    padding-top: 40px;
+    width: 200px;
+    background-color: #4b91b4;
+}
+.obli
+{
+    color:red;
+}
+#Nom,#Prénom
+{
+    border:none;
+    margin: none;
+    padding:none;
+    margin-left: 60px;
+    border-radius: 7px;
+    width: 300px;
+    height: 40px;
+    border: 1px solid black;
+}
+#Prénom
+{
+    margin: 3px;
+}
+.Deuxieme-colonne
+{
+    border:none;
+    margin: 3px;
+    padding:none;
+    margin-left: 60px;
+    margin-top: 40px;
+    border-radius: 7px;
+    width: 612px;
+    height: 40px;
+    border: 1px solid black;
+}
+.Genre
+{
+    margin-left: 60px;
+    margin-top: 25px;
+    color: #6d6e6f;
+}
+.Deuxieme-colonne-Date
+{
+    margin-left: 60px;
+    width: 300px;
+    height: 40px;
+    margin-top: 25px;
+    border: 1px solid black;
+}
+button.dernier-line
+{
+    background-color: #4b91b4;
+    padding: 5px;
+    margin-left: 200px;
+    height: 30px;
+    width: 120px;
+    border-radius: 15px;
+    color:black;
+}
+#VerExistance
+{
+    display: none;
+    color: red;
+    margin-left: 60px;
+}

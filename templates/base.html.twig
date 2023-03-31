@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <link rel="stylesheet" href="{{ asset('assets/css/allEmpls.css') }}">
+        <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.css') }}">
+        <link href="{{ asset('node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
+        {% block stylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="header">
+            <div class="titreGlobale"><a href='{{ path('app_employes_index') }}' style='color:black;text-decoration: none;'><b>all Employes  </b></a></div>
+            <nav class="nav">
+                <div class="addEmp">
+                    <form method='post' action='{{ path('app_employes_add') }}'>
+                        <button class='delete delete_add' type='submit' name='submit0' style='color:green;font-size: 20px;' >
+                        <img class='moussa' src='{{ asset('assets/img/plus.png') }}'>Add new employee </button>
+                    </form> 
+                </div>
+                <div class="deconnexion">
+                    <form method='post' action=''>
+                        <button class='delete decon' type='submit' name='submit1' style='color:red;'>
+                        Déconexion <img class='moussa' src='{{ asset('assets/img/cloud-computing.png') }}'></button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        {% for message in app.session.flashbag.get('succes') %}
+            <div class='alert alert-success'>
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.session.flashbag.get('delete') %}
+            <div class='alert alert-danger'>
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% block body %}{% endblock %}
+    </body>
+    <script src="{{ asset('node_modules/jquery/dist/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('node_modules/select2/dist/js/select2.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+        $('.select2').select2();
+        });
+    </script>
+    {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</html>

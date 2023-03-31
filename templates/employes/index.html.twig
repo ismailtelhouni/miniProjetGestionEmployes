@@ -1,0 +1,161 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}Employes index{% endblock %}
+{% block body %}
+    //
+    <h1>Employes index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Adresse</th>
+                <th>DateNaissance</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employe in employes %}
+            <tr>
+                <td>{{ employe.code }}</td>
+                <td>{{ employe.nom }}</td>
+                <td>{{ employe.prenom }}</td>
+                <td>{{ employe.sexe }}</td>
+                <td>{{ employe.adresse }}</td>
+                <td>{{ employe.dateNaissance ? employe.dateNaissance|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_employes_show', {'code': employe.code}) }}">show</a>
+                    <a href="{{ path('app_employes_edit', {'code': employe.code}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employes_new') }}">Create new</a>
+    //commantaire 
+    <div class="espace">h</div>
+    <div class="premier">
+        {% for employe in employes %}
+            <div > 
+                <div class='deuxieme'>
+                    <div class='deuxieme_1'>
+                        <div class='troixieme'><b>{{ employe.id }} : </b></div>
+                        <div class='troixieme'>{{ employe.prenom }} </div>
+                        <div class='troixieme'>{{ employe.nom }}</div>
+                    </div>
+                    <div class='deuxieme_2'>
+                        <b>Adresse :</b> {{ employe.adresse }}
+                    </div>
+                    //
+                    <div class='deuxieme_3'>
+                        <details>
+                            <summary><b>Details :</b></summary>
+                            <div class='details'>
+                                <div class='troixieme_1'><b>Genre :</b> {{ employe.sexe }}</div>
+                                <div class='troixieme_1'><b>Date de naissance :</b> {{ employe.dateNaissance ? employe.dateNaissance|date('Y-m-d') : ''  }}</div>
+                                <div class='troixieme_1'><b>Service :</b>{{ employe.NumServ }}</div>
+                            </div>
+                        </details>
+                    </div>
+                    //commantaire 
+                </div>
+                    <div class='del'>
+                        <div>
+                            {{ include('employes/_delete_form.html.twig') }}
+                        </div>
+                        <div>
+                            <form method='post' action="{{ path('app_employes_show', {'id': employe.id}) }}">
+                                <button class='delete'  type='submit' name='submit2' style='color:black;'>
+                                <img class='moussa' src='{{ asset('assets/img/list.png') }}'>Show </button>
+                            </form>
+                        </div>
+                        <div>
+                            <form method='post' action="{{ path('app_employes_edit', {'id': employe.id}) }}" onsubmit="return confirm('étes-vous sur de vouloir modifier ce donnée ?');">
+                                <button class='delete'  type='submit' name='submit2' style='color:#00d9ff;'>
+                                <img class='moussa' src='{{ asset('assets/img/edit.png') }}'>Edit </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+    </div>
+{% endblock %}
+#}
+{% extends 'layout_static.html.twig' %}
+
+{% block title %}all Employes{% endblock %}
+{% block PageTitle %}all Employes{% endblock %}
+
+{% block body %}
+    <div class="premier">
+        {% for employe in employes %}
+            <div > 
+                <div class='deuxieme'>
+                    <div class='deuxieme_1'>
+                        <div class='troixieme'><b>{{ employe.id }} : </b></div>
+                        <div class='troixieme'>{{ employe.prenom }} </div>
+                        <div class='troixieme'>{{ employe.nom }}</div>
+                    </div>
+                    <div class='deuxieme_2'>
+                        <b>Adresse :</b> {{ employe.adresse }}
+                    </div>
+                    {#
+                    <div class='deuxieme_3'>
+                        <details>
+                            <summary><b>Details :</b></summary>
+                            <div class='details'>
+                                <div class='troixieme_1'><b>Genre :</b> {{ employe.sexe }}</div>
+                                <div class='troixieme_1'><b>Date de naissance :</b> {{ employe.dateNaissance ? employe.dateNaissance|date('Y-m-d') : ''  }}</div>
+                                <div class='troixieme_1'><b>Service :</b>{{ employe.NumServ }}</div>
+                            </div>
+                        </details>
+                    </div>
+                    #}
+                </div>
+                    <div class='del'>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div>
+                                {{ include('employes/_delete_form.html.twig') }}
+                            </div>
+                        {% endif %}
+                        <div>
+                            {#
+                            <form method='post' action="{{ path('app_employes_show', {'id': employe.id}) }}">
+                                <button class='delete'  type='submit' name='submit2' style='color:black;'>
+                                <img class='moussa' src='{{ asset('assets/img/list.png') }}'>Show </button>
+                            </form>
+                            #}
+                            <a href="{{ path('app_employes_show', {'id': employe.id}) }}">
+                                <i class="fa-solid fa-circle-info" style='color:black;'></i>
+                            </a>
+                        </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div>
+                                <form method='post' action="{{ path('app_employes_edit', {'id': employe.id}) }}" onsubmit="return confirm('étes-vous sur de vouloir modifier ce donnée ?');">
+                                    <button class='delete'  type='submit' name='submit2' style='color:#00d9ff;'>
+                                    <i class="fa-solid fa-pen-to-square"></i></button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}New Employes{% endblock %}
+{% block body %}
+    <h1 style='width:420px;margin:auto;padding:10px;' >Create new Employes</h1>
+
+    {{ include('employes/_form.html.twig') }}
+    
+{% endblock %}
+#}
+{% extends 'layout_static.html.twig' %}
+
+{% block title %}New Employes{% endblock %}
+{% block PageTitle %}Create new Employes{% endblock %}
+{% block body %}
+    {{ include('employes/_form.html.twig') }}
+{% endblock %}

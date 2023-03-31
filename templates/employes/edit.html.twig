@@ -1,0 +1,25 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Employes{% endblock %}
+{% block body %}
+    <div class='edit_delete' style='width: 100%;display:flex;flex-direction:column;align-items:center;justify-content:center;'>
+        <div class='edit'><h1>Edit Employee</h1></div>
+        <div class='icon_delete'>{{ include('employes/_delete_form.html.twig') }}</div>
+    </div>
+    {{ include('employes/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}
+#}
+
+{% extends 'layout_static.html.twig' %}
+
+{% block title %}Edit Employes{% endblock %}
+{% block PageTitle %}
+    Edit Employee
+{% endblock %}
+{% block body %}
+    <div class='edit_delete' >
+        <div class='icon_delete'>{{ include('employes/_delete_form.html.twig') }}</div> 
+    </div>
+    {{ include('employes/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}

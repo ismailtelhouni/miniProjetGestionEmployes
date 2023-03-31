@@ -1,0 +1,108 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}Employes{% endblock %}
+
+{% block body %}
+    <div class='edit_delete' style='width: 100%;display:flex;flex-direction:column;align-items:center;justify-content:center;'>
+        <div class='edit'><h1>Show Employee</h1></div>
+        <div class='icon_delete' style='display:flex;flex-direction:row;'>
+            {{ include('employes/_delete_form.html.twig') }}
+            <form method='post' action="{{ path('app_employes_edit', {'id': employe.id}) }}" onsubmit="return confirm('étes-vous sur de vouloir modifier ce donnée ?');">
+                <button class='delete'  type='submit' name='submit2' style='color:#00d9ff;'>
+                <img class='moussa' src='{{ asset('assets/img/edit.png') }}'>Edit </button>
+            </form>
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ employe.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ employe.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ employe.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ employe.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ employe.adresse }}</td>
+            </tr>
+            <tr>
+                <th>DateNaissance</th>
+                <td>{{ employe.dateNaissance ? employe.dateNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Service</th>
+                <td>{{ employe.NumServ }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
+#}
+
+{% extends 'layout_static.html.twig' %}
+
+{% block title %}detail Employee{% endblock %}
+{% block PageTitle %}detail Employes{% endblock %}
+{% block body %}
+    <div class='edit_delete' style='width: 100%;display:flex;flex-direction:column;align-items:center;justify-content:center;'>
+        <div class='icon_delete' style='display:flex;flex-direction:row;width:100px;'>
+            {{ include('employes/_delete_form.html.twig') }}
+            {#
+            <form method='post' action="{{ path('app_employes_edit', {'id': employe.id}) }}" onsubmit="return confirm('étes-vous sur de vouloir modifier ce donnée ?');">
+                <button class='delete'  type='submit' name='submit2' style='color:#00d9ff;'>
+                <img class='moussa' src='{{ asset('assets/img/edit.png') }}'>Edit </button>
+            </form>
+            #}
+            <a href="{{ path('app_employes_edit', {'id': employe.id}) }}" style="padding-left:50px">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </a>
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ employe.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ employe.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ employe.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ employe.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ employe.adresse }}</td>
+            </tr>
+            <tr>
+                <th>DateNaissance</th>
+                <td>{{ employe.dateNaissance ? employe.dateNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Service</th>
+                <td>{{ employe.NumServ }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% if app.user %}
+        <p><b>Created By : {{ app.user.email }}</b></p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,92 @@
+{#
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+<form id="MyFormAddEmpl" method="post"  action="{{ path('app_employes_new') }}" >
+        <table  class="form">
+            <tr>
+                <td class="Premier-clonne"><b>Nom (*)</b></td>
+                <td><input id="Nom" name="nom"  type="text" placeholder="Nom de la famille">
+                <input id="Prénom" name="prenom" type="text" placeholder="Prénom"><br>
+                <span id="Error_Nom"></span><span id="Error_Prenom"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="Premier-clonne"><b>Genre (*)</b></td>
+                <td><b class="Genre">M </b><input class="Genre"  name="sexe" class="Deuxieme-colonne-Genre" type="radio" value='M'>
+                    <b class="Genre">F </b><input class="Genre" name="sexe" class="Deuxieme-colonne-Genre" type="radio" value='F'></td>
+            </tr>
+            <tr>
+                <td class="Premier-clonne"><b>Adresse (*)</b></td>
+                <td><textarea id="Adresse" name="adresse" class="Deuxieme-colonne" type="text" placeholder="Adresse"></textarea><br>
+                    <span id="Error_Adresse"></span></td>
+            </tr>
+            <tr>
+                <td class="Premier-clonne"><b>Date de naissance (*)</b></td>
+                <td><input id="DateNaissance" name="dateNaissance" class="Deuxieme-colonne-Date" type="Date"><br>
+                    <span id="Error_DateNaissance"></span></td>
+            </tr>
+            <tr>
+                <td class="obli">*obligatoire</td>
+                <td>
+                    <button class="dernier-line" type="submit" name="submit">Enregister </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+{{ form(form) }}#}
+<div class='container'>
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+        <div class='form-group'>
+            {{ form_label(form.nom)}}
+            {{ form_widget(form.nom) }}
+            {{ form_errors(form.nom) }}
+        </div>
+        <div class='form-group'>
+            {{ form_label(form.prenom) }}
+            {{ form_widget(form.prenom ) }}
+            {{ form_errors(form.prenom) }}
+        </div>
+        {#{{ dump(form.sexe.vars) }}
+        {% set class='' %}
+        {% if not form.sexe.vars.valid %}
+            {% set class='has-error' %}
+        {% endif %}#}
+        {% set class='' %}
+        <div class='form-group {{ class }}'>
+            <label for='{{ form.sexe.vars.id }}'>Genre</label><br>
+            <input class="form-check-input" type='radio' id='{{ form.sexe.vars.id }}' name='{{ form.sexe.vars.full_name }}' value='M' {% if form.sexe.vars.value=='M' %} checked {% endif %}}>
+            <label class="form-check-label" style='padding-left:5px;padding-right:5px;'>Homme</label>
+            <input class="form-check-input" type='radio' id='{{ form.sexe.vars.id }}' name='{{ form.sexe.vars.full_name }}' value='F' {% if form.sexe.vars.value=='F' %} checked {% endif %}}>
+            <label class="form-check-label" style='padding-left:5px;padding-right:5px;'>Femme</label>
+            {{ form_errors(form.sexe) }}
+            {% do form.sexe.setRendered %}
+        </div>
+        <div class='form-group'>
+            {{ form_label(form.adresse) }}
+            {{ form_widget(form.adresse) }}
+            {{ form_errors(form.adresse) }}
+        </div>
+        <div class='form-group'>
+            <label for='{{ form.dateNaissance.vars.id }}'>Date naissance</label><br>
+            <input class='form-control' type='date' id='{{ form.dateNaissance.vars.id }}' name='{{ form.dateNaissance.vars.full_name }}' value='{{ form.dateNaissance.vars.value }}'>
+            {% do form.dateNaissance.setRendered %}
+            {#{{ form_label(form.dateNaissance) }}
+            {{ form_widget(form.dateNaissance) }}#}
+        </div>
+        <div class='form-group'>
+            {{ form_label(form.photo) }}
+            {{ form_widget(form.photo) }}
+            {{ form_errors(form.photo) }}
+        </div>
+        <div class='form-group'>
+            {{ form_label(form.NumServ) }}
+            {{ form_widget(form.NumServ) }}
+            {{ form_errors(form.NumServ) }}
+        </div>
+        <div style='padding-top:10px'>
+            {{ form_widget(form.save,{'attr':{'class':'btn btn-success'}}) }}
+        </div>
+    {{ form_end(form) }}
+</div>
