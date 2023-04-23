@@ -7,7 +7,6 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         <link rel="stylesheet" href="{{ asset('assets/css/allEmpls.css') }}">
         <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.css') }}">
-        <link href="{{ asset('node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
         {% block stylesheets %}
         {% endblock %}
     </head>
@@ -41,13 +40,6 @@
         {% endfor %}
         {% block body %}{% endblock %}
     </body>
-    <script src="{{ asset('node_modules/jquery/dist/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('node_modules/select2/dist/js/select2.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-        $('.select2').select2();
-        });
-    </script>
     {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
     {% endblock %}

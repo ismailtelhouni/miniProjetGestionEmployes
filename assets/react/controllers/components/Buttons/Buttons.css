@@ -1,0 +1,31 @@
+.Button a
+{
+    font-size: 14px;
+    color: var(--color-light);
+    border-radius: var(--border-radius-primary);
+    padding: 12px 30px;
+    letter-spacing: 0.5px;
+    transition: all .3s;
+}
+
+.Primary-btn a
+{
+    background-color: var(--color-primary);
+
+}
+.Primary-btn a:hover
+{
+    background-color: var(--color-light);
+    color: var(--color-primary);
+}
+
+.Secondary-btn a
+{
+    border: 1px solid var(--color-primary);
+}
+
+.Secondary-btn a:hover
+{
+    border: 1px solid var(--color-light);
+    color:var(--color-primary)
+}

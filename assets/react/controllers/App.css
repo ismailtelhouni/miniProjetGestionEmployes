@@ -1,0 +1,36 @@
+:root {
+    --color-dark: #27292a;
+    --color-darkest:#1f2122;
+    --color-light:white;
+    --color-primary:#ec6090;
+    --color-icons:yellow;
+
+    --color-bg-body:var(--color-darkest);
+
+    --distance-primary:50px;
+    --padding-primary:var(--distance-primary);
+    --margin-primary:var(--distance-primary);
+    --border-radius-primary:calc(var(--distance-primary)/2);
+    --padding-secondary:calc(var(--distance-primary)/2);
+    --margin-secondary:calc(var(--distance-primary)/2);
+    --border-radius-secondary:calc(var(--distance-primary)/4);
+    --font-family-primary: 'Poppins', sans-serif;
+    --font-weight-bold:900;
+    --font-weight-normal:400;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+
+body
+{
+    background-color: var(--color-bg-body);
+    font-family: var(--font-family-primary);
+}
+
+ul
+{
+    list-style-type: none;
+}
+a
+{
+    text-decoration: none;
+}

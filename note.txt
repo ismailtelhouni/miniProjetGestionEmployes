@@ -1,0 +1,13 @@
+search 
+    git status
+    git add .
+    git commit -m "feat: pagination & filtre"
+
+react 
+    composer require symfony/webpack-encore-bundle
+    composer require symfony/ux-react
+    npm install --force
+    npm install -D tailwindcss postcss autoprefixer postcss-loader
+    npx tailwindcss init -p
+    npm run build
+    npm install @babel/preset-react@^7.0.0 --save-dev

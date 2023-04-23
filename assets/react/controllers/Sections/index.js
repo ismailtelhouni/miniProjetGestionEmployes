@@ -1,0 +1,5 @@
+export { default as Header } from './Header/Header'
+export { default as Hero } from '../Sections/Hero/Hero'
+export { default as MostPopular } from '../Sections/MostPopular/MostPopular'
+export { default as GamingLibrary } from '../Sections/GamingLibrary/GamingLibrary'
+export { default as Footer } from '../Sections/Footer/Footer'
