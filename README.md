@@ -1,8 +1,8 @@
-# Projet de Gestion des Employés
+# Projet de Gestion des Employés avec Symfony
 
 ## Description
 
-Ce projet vise à créer un système simple de gestion des employés pour suivre les détails de base des employés d'une organisation. Il permet d'ajouter, de modifier, de supprimer et de consulter les informations des employés.
+Ce projet utilise le framework Symfony pour créer un système de gestion des employés, permettant de suivre les détails de base des employés d'une organisation. Il propose des fonctionnalités telles que l'ajout, la modification, la suppression et la consultation des informations des employés.
 
 ## Fonctionnalités
 
@@ -15,4 +15,13 @@ Ce projet vise à créer un système simple de gestion des employés pour suivre
 
 1. **Clonage du Projet :**
    ```bash
-   git clone https://github.com/votre-utilisateur/gestion-employes.git
+   git clone https://github.com/ismailtelhouni/miniProjetGestionEmployes.git
+
+2. **Installation des Dépendances :**
+   ```bash
+   cd miniProjetGestionEmployes
+   composer install
+3. **Lancement du Serveur :**
+   ```bash
+   symfony serve
+
